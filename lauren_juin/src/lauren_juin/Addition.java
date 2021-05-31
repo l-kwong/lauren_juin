@@ -1,7 +1,7 @@
 /*
 * Author : laurenkwong
 * Date : May 31, 2021
-* Description : 
+* Description : Permet d'additioner deux nombre
 */
 
 package lauren_juin;
@@ -22,24 +22,22 @@ public class Addition extends Application {
 		Scene scene=new Scene(group,400,400);
 		
 		TextField txt=new TextField();
-		txt.setText("premier nombre");
 		txt.setLayoutX(120);
 		txt.setLayoutY(60);
 			
-		txt.textProperty().addListener((observable,oldValue,newValue) ->
+		txt.setOnAction((event) ->
 		{
-			System.out.println("nouveau texte = " + newValue);
+			System.out.println(txt.getText());
 		}
-				);
+			);
 		
 		TextField txt1=new TextField();
-		txt1.setText("deuxième nombre");
 		txt1.setLayoutX(120);
 		txt1.setLayoutY(100);
 			
-		txt.setOnAction((event) ->
+		txt1.setOnAction((event) ->
 			{
-				System.out.println("Text = " + txt.getText());
+				System.out.println(txt1.getText());
 			}
 				);
 		
@@ -67,13 +65,31 @@ public class Addition extends Application {
 		label2.setLayoutX(100);
 		label2.setLayoutY(140);
 		
+		label2.setOnKeyPressed((event) ->
+		{
+			System.out.println(txt1.getText());
+		}
+			);
+		
 		Label label3=new Label();
 		label3.setLayoutX(100);
 		label3.setLayoutY(140);
+		
+		label3.setOnKeyPressed((event) ->
+		{
+			System.out.println("=");
+		}
+			);
 	
 		Label label4=new Label();
 		label4.setLayoutX(100);
 		label4.setLayoutY(140);
+		
+		label4.setOnKeyPressed((event) ->
+		{
+			System.out.println();
+		}
+			);
 			
 		group.getChildren().add(txt);
 		group.getChildren().add(txt1);
