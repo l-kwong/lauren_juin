@@ -21,87 +21,71 @@ public class Addition extends Application {
 		Group group=new Group();
 		Scene scene=new Scene(group,400,400);
 		
-		TextField txt=new TextField("0");
-		txt.setLayoutX(120);
-		txt.setLayoutY(60);
-			
-		txt.setOnAction((event) ->
-		{
-			System.out.println(txt.getText());
-		}
-			);
-		
 		TextField txt1=new TextField("0");
-		txt1.setLayoutX(120);
+		TextField txt2=new TextField("0");
+		Label lbl1=new Label("0");
+		Label lbl2=new Label("+");
+		Label lbl3=new Label("0");
+		Label lbl4=new Label("=");
+		Label lbl5=new Label("0");
+		
+		txt1.setLayoutX(100);
 		txt1.setLayoutY(100);
+		
+		txt2.setLayoutX(100);
+		txt2.setLayoutY(140);
 			
-		txt1.setOnAction((event) ->
-			{
-				System.out.println(txt1.getText());
-			}
-				);
+		lbl1.setLayoutX(100);
+		lbl1.setLayoutY(180);
 		
-		Label label=new Label();
-		label.setLayoutX(100);
-		label.setLayoutY(140);
+		lbl2.setLayoutX(120);
+		lbl2.setLayoutY(180);
 		
-		label.setOnKeyPressed((event) ->
-		{
-			System.out.println(txt.getText());
-		}
-			);
+		lbl3.setLayoutX(140);
+		lbl3.setLayoutY(180);
 		
-		Label label1=new Label();
-		label1.setLayoutX(100);
-		label1.setLayoutY(140);
-		
-		label1.setOnKeyPressed((event) ->
-		{
-			System.out.println("+");
-		}
-			);
-		
-		Label label2=new Label();
-		label2.setLayoutX(100);
-		label2.setLayoutY(140);
-		
-		label2.setOnKeyPressed((event) ->
-		{
-			System.out.println(txt1.getText());
-		}
-			);
-		
-		Label label3=new Label();
-		label3.setLayoutX(100);
-		label3.setLayoutY(140);
-		
-		label3.setOnKeyPressed((event) ->
-		{
-			System.out.println("=");
-		}
-			);
+		lbl4.setLayoutX(160);
+		lbl4.setLayoutY(180);
 	
-		Label label4=new Label();
-		label4.setLayoutX(100);
-		label4.setLayoutY(140);
+		lbl5.setLayoutX(180);
+		lbl5.setLayoutY(180);
 		
-		label4.setOnKeyPressed((event) ->
-		{
-			System.out.println();
-		}
-			);
+		
+		lbl1.textProperty().bind(txt1.textProperty());
+		lbl3.textProperty().bind(txt2.textProperty());
+		
+			lbl3.textProperty().addListener((observable,oldValue,newValue) -> {
+				if(!newValue.matches("^[0-9](\\.[0.9]+)?$"))
+					{
+						txt2.setText(newValue.replaceAll("[^\\d*\\.]",""));
+					}
+			lbl5.setText(Integer.toString((checkLabel(lbl1))+ checkLabel(lbl3)));
+			});
 			
-		group.getChildren().add(txt);
-		group.getChildren().add(txt1);
-		group.getChildren().add(label);
-		group.getChildren().add(label1);
-		group.getChildren().add(label2);
-		group.getChildren().add(label3);
-		group.getChildren().add(label4);
+			lbl1.textProperty().addListener((observable,oldValue,newValue) -> {
+				if(!newValue.matches("^[0-9](\\.[0.9]+)?$"))
+					{
+						txt1.setText(newValue.replaceAll("[^\\d*\\.]",""));
+					}
+			lbl5.setText(Integer.toString((checkLabel(lbl1))+ checkLabel(lbl3)));
+			});
 		
-	primaryStage.setScene(scene);
-	primaryStage.show();
+		group.getChildren().addAll(txt1,txt2,lbl1,lbl2,lbl3,lbl4,lbl5);
 		
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Addition");
+		primaryStage.show();
+		
+	}
+	
+	int checkLabel(Label a)
+	{
+		int val;
+		if(a.getText().equals(""))
+			val=0;
+		else
+			val=Integer.parseInt(a.getText());
+		return val;
 	}
 
 	public static void main(String[] args) {
