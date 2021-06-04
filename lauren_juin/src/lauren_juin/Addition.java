@@ -1,7 +1,7 @@
 /*
 * Author : laurenkwong
 * Date : May 31, 2021
-* Description : Permet d'additioner deux nombre
+* Description : Permet d'additioner deux nombres
 */
 
 package lauren_juin;
@@ -21,7 +21,7 @@ public class Addition extends Application {
 		Group group=new Group();
 		Scene scene=new Scene(group,400,400);
 		
-		TextField txt=new TextField();
+		TextField txt=new TextField("0");
 		txt.setLayoutX(120);
 		txt.setLayoutY(60);
 			
@@ -31,7 +31,7 @@ public class Addition extends Application {
 		}
 			);
 		
-		TextField txt1=new TextField();
+		TextField txt1=new TextField("0");
 		txt1.setLayoutX(120);
 		txt1.setLayoutY(100);
 			
