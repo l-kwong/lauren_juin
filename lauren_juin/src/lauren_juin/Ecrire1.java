@@ -13,15 +13,15 @@ import java.io.PrintWriter;
 public class Ecrire1 {
 
 	public static void main(String[] args) {
-		String Fichier="Ecrire.txt";
-		final String s1="Voici ce que je voudrais";
-		final String s2="écrire et vous faire comprendre";
+		String Fichier="/Users/laurenkwong/desktop/Ecrire1.txt";
+		final String s1="Un autre texte";
+		final String s2="\nécrire et vous faire comprendre";
 		
 		FileWriter ficAEcrire;
 		PrintWriter sortie;
 		try
 		{
-			ficAEcrire=new FileWriter(Fichier);
+			ficAEcrire=new FileWriter(Fichier,true);
 			sortie=new PrintWriter(ficAEcrire);
 			sortie.print(s1);
 			sortie.print(s2);
