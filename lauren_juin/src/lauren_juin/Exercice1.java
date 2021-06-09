@@ -13,23 +13,34 @@ import java.io.IOException;
 
 public class Exercice1 {
 
-	public static void main(String[] args)	throws IOException,FileNotFoundException
+	public static void main(String[] args)	
 	{
 		FileReader ficALire;
 		BufferedReader entree;
-		int c;
 		
-			ficALire=new FileReader("monFichier.txt");
+		char c;
+		int count=0;
+		try {
+			ficALire=new FileReader("/Users/laurenkwong/desktop/monFichier.txt");
 			entree = new BufferedReader(ficALire);
-			c=entree.read(); //Lecture du premier caractère
 			
-			while(c != -1 && c != '\n') //enlever  && c != '\n' pour imprimer plusieurs lignes
+			while (entree.ready())
 			{
-				System.out.print((char) c);
-				c=entree.read();
+				c= (char) entree.read();
+				
+				if(c=='a')
+				{
+					count++;
+				}
 			}
 			
+			System.out.println("Il y a " + count + " caractéres 'a' dans le texte");
 			entree.close();
-			ficALire.close();
+		} catch (FileNotFoundException fnf) {
+			System.out.println("Le fichier ne peut pas être lu");
+		} catch (IOException ioe) {
+			System.out.println("Erreur d'entrée");
+		}
+		
 	}
 }
