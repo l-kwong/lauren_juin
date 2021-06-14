@@ -21,7 +21,7 @@ public class ValidPhone {
 		System.out.println("Inscrire le numéro de télephone au format (123)-456-7890 Ext 234");
 		String input = crayon.nextLine();
 		verifPhone(input);
-		crayon.close();
+		crayon.close(); 
 	}
 	
 	private static void verifPhone(String tel)

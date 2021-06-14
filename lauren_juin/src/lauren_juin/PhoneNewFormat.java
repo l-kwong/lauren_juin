@@ -37,7 +37,7 @@ public class PhoneNewFormat {
 		}
 		crayon.close();
 		
-		Pattern pattern=Pattern.compile(regex);
+		Pattern pattern=Pattern.compile(regex); 
 		for(String phone:tel)
 		{
 			Matcher matcher=pattern.matcher(phone);
